@@ -2,6 +2,10 @@
   "name": "todo",
   "version": "0.1.0",
   "private": true,
+  "main": "index.js",
+  "repository": "git@github.com:nunjuck/pet-todo.git",
+  "author": "Nikita Koshelev <nikita.koshelev@poleinvest.ru>",
+  "license": "MIT",
   "dependencies": {
     "@chakra-ui/react": "^1.8.8",
     "@emotion/react": "^11.0.0",
@@ -25,10 +29,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
+    "lint": "eslint src/ --ext .ts,.tsx --cache",
+    "lint:fix": "yarn lint --fix",
+    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
   },
   "browserslist": {
     "production": [
@@ -41,5 +44,19 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.21.0",
+    "@typescript-eslint/parser": "^5.21.0",
+    "eslint": "^8.14.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-import-resolver-typescript": "^2.7.1",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.29.4",
+    "eslint-plugin-react-hooks": "^4.5.0",
+    "prettier": "^2.6.2"
   }
 }
