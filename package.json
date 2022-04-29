@@ -32,7 +32,8 @@
     "test": "react-scripts test",
     "lint": "eslint src/ --ext .ts,.tsx --cache",
     "lint:fix": "yarn lint --fix",
-    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
+    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc",
+    "prepare": "husky install"
   },
   "browserslist": {
     "production": [
@@ -57,6 +58,12 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-react-hooks": "^4.5.0",
+    "husky": ">=6",
+    "lint-staged": ">=10",
     "prettier": "^2.6.2"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": "yarn lint:fix",
+    "*.{js,jsx,ts,tsx,css,md,json}": "yarn format"
   }
 }
