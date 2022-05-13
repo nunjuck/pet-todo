@@ -2,27 +2,23 @@ import React, { FC, useState } from 'react'
 import { Button, Input } from '@chakra-ui/react'
 import nextId from 'react-id-generator'
 
-import { Task } from '../../types'
+import { useAppDispatch } from '../../hooks/redux'
+import { taskSlice } from '../../store/reducers/TaskSlice'
 
 import styles from './CreateTask.module.css'
 
-interface ICreateTask {
-  onCreateTask: (task: Task) => void
-}
-
-const CreateTask: FC<ICreateTask> = (props) => {
+const CreateTask: FC = () => {
   const [textTask, setTextTask] = useState('')
-  const { onCreateTask } = props
+
+  const { addTask } = taskSlice.actions
+  const dispatch = useAppDispatch()
 
   const htmlId = nextId()
 
   const onSubmitTask = (e: React.FormEvent) => {
     e.preventDefault()
-    onCreateTask({
-      id: htmlId,
-      text: textTask,
-      isCompleted: false
-    })
+
+    dispatch(addTask({ id: htmlId, text: textTask, isCompleted: false }))
     setTextTask('')
   }
 
@@ -31,9 +27,9 @@ const CreateTask: FC<ICreateTask> = (props) => {
   }
   return (
     <form className={styles.createTaskForm} onSubmit={onSubmitTask}>
-      <Input placeholder='Basic usage' value={textTask} onChange={handleChangeText} />
-      <Button colorScheme='teal' size='md'>
-        Button
+      <Input placeholder='...' value={textTask} onChange={handleChangeText} />
+      <Button colorScheme='teal' size='md' type='submit'>
+        Добавить
       </Button>
     </form>
   )
